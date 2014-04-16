@@ -1,0 +1,16 @@
+<%= form_for @list_item do |l| %>
+
+	<div class="field">
+		<%= l.text_field :user_id, placeholder: 'User ID' %>
+	</div>
+
+	<div class="field">
+		<%= l.text_field :product_id,
+			placeholder: 'Product ID' %>
+	</div>
+
+	<div>
+		<%= l.submit 'Submit' %>
+	</div>
+	
+<% end %>
