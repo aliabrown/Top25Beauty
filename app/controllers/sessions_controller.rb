@@ -4,9 +4,10 @@ class SessionsController < ApplicationController
   end
 
   def create
+    
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
+      cookies.permanent[:authentication_token] = user.authentication_token
       redirect_to '/list_items'
     else
       redirect_to '/login'
@@ -17,3 +18,4 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to '/list_items'
   end
+end
