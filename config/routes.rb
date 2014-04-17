@@ -19,5 +19,7 @@ root to: 'sessions#new'
   # delete 'list_items/:id' => 'list_items#destroy'
 
   resources :list_items
+
+  resources :products
   
 end
