@@ -1,0 +1,7 @@
+<br><br>
+<% @products.sort_by { |p| p.list_items.count }.reverse.uniq.each_with_index do |product, i| %>
+<%= "##{i+1}."%>
+Number of Listers:<%= product.list_items.count %>
+Product Name:<%= product.name %>
+Product ID:<%= product.id %><br><br>
+<% end %>

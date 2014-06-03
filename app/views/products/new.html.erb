@@ -1,6 +1,6 @@
 <h1>Add Product</h1>
 
-<%= form_for :product do |f| %>
+<%= form_for @product do |f| %>
   Name <%= f.text_field :name, class: 'form-control'  %>
   Image <%= f.text_field :image, class: 'form-control'  %>
   Link <%= f.text_field :link, class: 'form-control'  %>

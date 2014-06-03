@@ -1,0 +1,22 @@
+<% @products.each do |product| %>
+<%= product.name %>
+<% if current_user %>
+<div id="product_form">
+	<% if current_user.list_items.find_by_product_id(product.id) %>
+	  <%= form_for(current_user.list_items.find_by_product_id(product.id), html: { method: :delete }) do |f| %>
+	    <%= f.submit "unlist!" %><br><br>
+	  <% end %> 
+	 <% else %>
+	  <%= form_for(current_user.list_items.build(product_id: product.id)) do |f| %>
+	  <%= f.hidden_field :product_id, value: product.id  %>
+	    <%= f.submit "list!" %><br><br>
+	  <% end %>
+	<% end %>
+  </div>
+ <% else %>
+ 
+<% end %>	
+
+<% end %>
+
+

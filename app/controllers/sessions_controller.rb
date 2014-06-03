@@ -13,9 +13,11 @@ class SessionsController < ApplicationController
       redirect_to '/login'
     end
   end
+  
+  def show;end
 
   def destroy
-    session[:user_id] = nil
-    redirect_to '/list_items'
+    cookies.delete(:authentication_token)
+    redirect_to root_url
   end
 end

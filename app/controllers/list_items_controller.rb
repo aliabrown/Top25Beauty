@@ -3,18 +3,20 @@ class ListItemsController < ApplicationController
   	@list_items = current_user.list_items.all
   end
 
-  def new
-  	@list_item = current_user.build_list_items
+  def create
+  	@list_item = current_user.list!(list_item_params)
+  	redirect_to :back
   end
 
-  def create
-  	@list_item = current_user.build_list_items(list_item_params)
-  	redirect_to action: 'index'
+  def destroy
+    @list_item = ListItem.find(params[:id]).destroy
+    redirect_to :back
   end
-end
 
 private
 
   def list_item_params
     params.require(:list_item).permit(:user_id, :product_id)
   end
+
+end

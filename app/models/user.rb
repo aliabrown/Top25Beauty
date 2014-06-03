@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
       self[column] = SecureRandom.urlsafe_base64
     end while User.exists?(column => self[column])
   end
+  
+  def list!(params)
+     list_items.create!(params)
+  end
 
   
 end

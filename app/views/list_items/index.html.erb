@@ -3,16 +3,16 @@
 <table>
 	<thead>
 		<tr>
-			<th>User ID</th>
-			<th>Product ID</td>
+			<th>Product Name</th>
+			<th>Link</td>
 		</tr>
 	</thead>
 
 	<tbody>
-		<%= @list_items.each do |l| %>
+		<% @list_items.each do |l| %>
 			<tr>
-				<td><%= l.user_id %></td>
-				<td><%= l.product_id %></td>
+				<td><%= l.product.name %></td>
+				<td><%= l.product.link %></td>
 			</tr>
 		<% end %>
 	</tbody>

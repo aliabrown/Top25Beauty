@@ -1,5 +1,9 @@
 Top25Beauty::Application.routes.draw do
   
+  resources :products
+  resources :lists
+  resources :sessions
+  
   # get "list_items/index"
 root to: 'sessions#new'
 
@@ -20,6 +24,6 @@ root to: 'sessions#new'
 
   resources :list_items
 
-  resources :products
+  
   
 end

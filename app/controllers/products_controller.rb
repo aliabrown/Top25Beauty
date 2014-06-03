@@ -5,15 +5,14 @@ class ProductsController < ApplicationController
 	end
 
 	def new
-		@products = Product.new
+		@product = Product.new
 	end
 
 	def create
 		@product = Product.find_or_create_by(product_params)
-
-		if @product.create
-			list_item = List_item.new( user_id: current_user.id, product_id: @product.id )
-      		list_item.save
+		if @product.present?
+			@list_item = ListItem.create( user_id: current_user.id, product_id: @product.id )
+      redirect_to list_items_path
 		else
 			redirect_to :back
 		end
@@ -22,6 +21,6 @@ end
 
 	private
 
-  def user_params
+  def product_params
     params.require(:product).permit(:name, :image, :link)
   end
